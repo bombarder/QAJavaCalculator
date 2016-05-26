@@ -20,7 +20,8 @@ public class Calculator {
         scanner.close();
 
         MathOperation operation = MathOperation.getOperation();
-        System.out.println(operation.calculate(firstValue, secondValue));
+        Calculation mathCalculation = operation.getCalculation(operator);
+        System.out.println(mathCalculation.calculate(firstValue, secondValue));
 
     }
 
