@@ -1,5 +1,5 @@
 
-public class MathOperation implements Calculation {
+public class MathOperation {
 
     private static MathOperation operation = new MathOperation();
 
@@ -10,9 +10,20 @@ public class MathOperation implements Calculation {
         return operation;
     }
 
-    public double calculate(double firstValue, double secondValue) {
-        return 0;
+    public Calculation getCalculation(String operation) {
+        switch (operation) {
+            case "/":
+                return new Division();
+            case "+":
+                return new Addition();
+            case "-":
+                return new Sutraction();
+            case "*":
+                return new Multiplication();
+            default:
+                return null;
+        }
     }
-
-
 }
+
+
