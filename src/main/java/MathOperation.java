@@ -1,3 +1,5 @@
+import java.util.HashMap;
+import java.util.Map;
 
 public class MathOperation {
 
@@ -6,23 +8,19 @@ public class MathOperation {
     private MathOperation() {
     }
 
-    public static MathOperation getOperation() {
+    public static MathOperation getInstance() {
         return operation;
     }
 
-    public Calculation getCalculation(String operation) {
-        switch (operation) {
-            case "/":
-                return new Division();
-            case "+":
-                return new Addition();
-            case "-":
-                return new Sutraction();
-            case "*":
-                return new Multiplication();
-            default:
-                return null;
-        }
+    public Calculation getCalculation(String operator) {
+
+        Map<String, Calculation> map = new HashMap<>();
+        map.put("+", new Addition());
+        map.put("-", new Subtraction());
+        map.put("*", new Multiplication());
+        map.put("/", new Division());
+
+        return map.get(operator);
     }
 }
 

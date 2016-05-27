@@ -1,5 +1,5 @@
 
-public class Sutraction implements Calculation {
+public class Subtraction implements Calculation {
 
     @Override
     public double calculate(double firstValue, double secondValue) {
