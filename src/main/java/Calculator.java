@@ -27,7 +27,7 @@ public class Calculator {
             operator = "/";
         }
 
-        String[] result = inputLine.split("//+");
+        String[] result = inputLine.split("[-+/*]");
         Calculation mathCalculation = operation.getCalculation(operator);
 
         firstDigit = Double.parseDouble(result[0]);
