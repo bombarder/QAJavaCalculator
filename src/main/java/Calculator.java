@@ -10,10 +10,30 @@ public class Calculator {
         System.out.println(evaluate(inputLine));
     }
 
-    private static double evaluate(String inputLine){
-        char [] inputToCharArray = inputLine.toCharArray();
-        inputLine.
-        double leftDigit = Double.valueOf(inputLine.substring(0,1));
-        return leftDigit;
+    private static double evaluate(String inputLine) {
+        MathOperation operation = MathOperation.getOperation();
+
+        double firstDigit;
+        double secondDigit;
+        String operator = null;
+
+        if (inputLine.contains("+")) {
+            operator = "+";
+        } else if (inputLine.contains("-")) {
+            operator = "-";
+        } else if (inputLine.contains("*")) {
+            operator = "*";
+        } else if (inputLine.contains("/")) {
+            operator = "/";
+        }
+
+        String[] result = inputLine.split("//+");
+        Calculation mathCalculation = operation.getCalculation(operator);
+
+        firstDigit = Double.parseDouble(result[0]);
+        secondDigit = Double.parseDouble(result[1]);
+
+        return mathCalculation.calculate(firstDigit, secondDigit);
+
     }
 }
