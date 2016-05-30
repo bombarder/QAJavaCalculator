@@ -1,41 +1,53 @@
+
 import java.util.Scanner;
 
 public class Calculator {
+
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please, input first number.");
-        Double firstValue = getDigit(scanner);
+        System.out.println("Please, input math expression: ");
 
-        System.out.println("Please, input arithmetic symbol *,-,*,/");
-        String operator = scanner.next();
-
-        while (!operator.equals("+") && !operator.equals("-") && !operator.equals("*") && !operator.equals("/")) {
-            System.out.println("please input *,-,*,/ only");
-            operator = scanner.next();
+        while (true) {
+            String inputLine = scanner.nextLine();
+            if (inputLine.equals("exit")) {
+                break;
+            }
+            try {
+                System.out.println(evaluate(inputLine));
+            } catch (NumberFormatException e) {
+                System.out.println("Please, input digits only");
+                continue;
+            }
         }
-
-        System.out.println("Please, input second number.");
-        Double secondValue = getDigit(scanner);
-        scanner.close();
-
-        MathOperation operation = MathOperation.getOperation();
-        Calculation mathCalculation = operation.getCalculation(operator);
-        System.out.println(mathCalculation.calculate(firstValue, secondValue));
-
     }
 
-    private static double getDigit(Scanner scanner) {
-        double inputDigit;
-        do {
-            try {
-                inputDigit = scanner.nextDouble();
-                break;
-            } catch (Exception e) {
-                System.out.println("Please, input digits only");
-                scanner.next();
-            }
-        } while (true);
-        return inputDigit;
+    private static double evaluate(String inputLine) {
+        double firstDigit;
+        double secondDigit;
+        String operator = null;
+
+        CalculationFactory operation = CalculationFactory.getInstance();
+        operator = operatorValidation(inputLine, operator);
+        String[] result = inputLine.split("[-+/*]");
+        Calculation mathCalculation = operation.getCalculation(operator);
+
+        firstDigit = Double.parseDouble(result[0]);
+        secondDigit = Double.parseDouble(result[1]);
+
+        return mathCalculation.calculate(firstDigit, secondDigit);
+    }
+
+    private static String operatorValidation(String inputLine, String operator) {
+        if (inputLine.contains("+")) {
+            operator = "+";
+        } else if (inputLine.contains("-")) {
+            operator = "-";
+        } else if (inputLine.contains("*")) {
+            operator = "*";
+        } else if (inputLine.contains("/")) {
+            operator = "/";
+        }
+        return operator;
     }
 }

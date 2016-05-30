@@ -1,29 +1,27 @@
 
-public class MathOperation {
-
-    private static MathOperation operation = new MathOperation();
-
-    private MathOperation() {
-    }
-
-    public static MathOperation getOperation() {
-        return operation;
-    }
-
-    public Calculation getCalculation(String operation) {
-        switch (operation) {
-            case "/":
-                return new Division();
-            case "+":
-                return new Addition();
-            case "-":
-                return new Sutraction();
-            case "*":
-                return new Multiplication();
-            default:
-                return null;
+public enum MathOperation implements Calculation{
+    ADDITION{
+        @Override
+        public double calculate(double firstValue, double secondValue) {
+            return firstValue + secondValue;
+        }
+    },
+    SUBTRACTION{
+        @Override
+        public double calculate(double firstValue, double secondValue) {
+            return firstValue - secondValue;
+        }
+    },
+    MULTIPLICATION{
+        @Override
+        public double calculate(double firstValue, double secondValue) {
+            return firstValue * secondValue;
+        }
+    },
+    DIVISION{
+        @Override
+        public double calculate(double firstValue, double secondValue) {
+            return firstValue / secondValue;
         }
     }
 }
-
-
