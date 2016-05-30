@@ -7,15 +7,17 @@ public class Calculator {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please, input math expression: ");
-        String inputLine = scanner.nextLine();
 
         while (true) {
+            String inputLine = scanner.nextLine();
+            if (inputLine.equals("exit")) {
+                break;
+            }
             try {
                 System.out.println(evaluate(inputLine));
-                break;
             } catch (NumberFormatException e) {
                 System.out.println("Please, input digits only");
-                inputLine = scanner.nextLine();
+                continue;
             }
         }
     }
@@ -25,7 +27,7 @@ public class Calculator {
         double secondDigit;
         String operator = null;
 
-        MathOperation operation = MathOperation.getInstance();
+        CalculationFactory operation = CalculationFactory.getInstance();
         operator = operatorValidation(inputLine, operator);
         String[] result = inputLine.split("[-+/*]");
         Calculation mathCalculation = operation.getCalculation(operator);
