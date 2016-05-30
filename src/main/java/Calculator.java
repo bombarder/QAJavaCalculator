@@ -27,7 +27,7 @@ public class Calculator {
         double secondDigit;
         String operator = null;
 
-        MathOperation operation = MathOperation.getInstance();
+        CalculationFactory operation = CalculationFactory.getInstance();
         operator = operatorValidation(inputLine, operator);
         String[] result = inputLine.split("[-+/*]");
         Calculation mathCalculation = operation.getCalculation(operator);
