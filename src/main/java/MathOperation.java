@@ -1,5 +1,6 @@
 
 public enum MathOperation implements Calculation{
+
     ADDITION{
         @Override
         public double calculate(double firstValue, double secondValue) {

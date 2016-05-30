@@ -15,14 +15,14 @@ public class Calculator {
             }
             try {
                 System.out.println(evaluate(inputLine));
-            } catch (NumberFormatException e) {
+            } catch (CustomException e) {
                 System.out.println("Please, input digits only");
                 continue;
             }
         }
     }
 
-    private static double evaluate(String inputLine) {
+    private static double evaluate(String inputLine) throws CustomException {
         double firstDigit;
         double secondDigit;
         String operator = null;
