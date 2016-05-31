@@ -32,6 +32,13 @@ public class Calculator {
         String[] result = inputLine.split("[-+/*]");
         Calculation mathCalculation = operation.getCalculation(operator);
 
+        if (mathCalculation.equals(MathOperation.DIVISION)) {
+            if (Double.parseDouble(result[1]) == 0.0) {
+                System.out.println("Division by zero aren't allowed.");
+
+            }
+        }
+
         firstDigit = Double.parseDouble(result[0]);
         secondDigit = Double.parseDouble(result[1]);
 
