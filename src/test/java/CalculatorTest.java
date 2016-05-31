@@ -4,20 +4,22 @@ import static org.junit.Assert.assertEquals;
 
 public class CalculatorTest {
     @Test
-    public void test1(){
-        checkMethod("1+1", 2.0);
-    }
+    public void test_1_plus_1(){checkMethod("1+1", 2.0);}
     @Test
-    public void test2(){
+    public void test_zero_plus_zero(){
         checkMethod("0+0", 0.0);
     }
     @Test
-    public void test3(){
+    public void test_zero_minus_one(){
         checkMethod("0-1", -1.0);
     }
     @Test
-    public void test4(){
+    public void test_one_multp_zero(){
         checkMethod("1*0", 0.0);
+    }
+    @Test
+    public void test_divide_zero(){
+        checkMethod("1/0", 0.0);
     }
 
     private static void checkMethod(String input, Double expected){

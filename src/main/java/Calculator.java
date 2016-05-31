@@ -15,7 +15,7 @@ public class Calculator {
             }
             try {
                 System.out.println(evaluate(inputLine));
-            } catch (NumberFormatException e) {
+            } catch (CustomException e) {
                 System.out.println("Please, input digits only");
                 continue;
             }
@@ -35,7 +35,7 @@ public class Calculator {
         if (mathCalculation.equals(MathOperation.DIVISION)) {
             if (Double.parseDouble(result[1]) == 0.0) {
                 System.out.println("Division by zero aren't allowed.");
-
+                return 0.0;
             }
         }
 
