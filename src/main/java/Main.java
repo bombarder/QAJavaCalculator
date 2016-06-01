@@ -5,10 +5,9 @@ public class Main extends Calculator {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please, input math expression: ");
-
         while (true) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Please, input math expression: ");
             String inputLine = scanner.nextLine();
             if (inputLine.equals("exit")) {
                 break;

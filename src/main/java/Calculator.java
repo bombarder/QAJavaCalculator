@@ -14,7 +14,7 @@ public class Calculator {
             boolean comparison = Double.compare(0.0, userInput) == 0.0;
 
             if (comparison) {
-                System.out.println("Division by zero aren't allowed.");
+                System.out.println("Division by zero isn't allowed.");
                 return 0.0;
             }
         }
@@ -31,6 +31,12 @@ public class Calculator {
 
         String operator = null;
 
+        while (!inputLine.contains("+") && !inputLine.contains("-")
+                && !inputLine.contains("*") && !inputLine.contains("/")) {
+            System.out.println("Invalid input please enter a valid operator +, -, * or /");
+            break;
+        }
+
         if (inputLine.contains("+")) {
             operator = "+";
         } else if (inputLine.contains("-")) {
@@ -41,5 +47,6 @@ public class Calculator {
             operator = "/";
         }
         return operator;
+
     }
 }
