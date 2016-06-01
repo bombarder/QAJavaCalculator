@@ -1,51 +1,37 @@
 
-import java.util.Scanner;
-
 public class Calculator {
 
-    public static void main(String[] args) {
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please, input math expression: ");
-
-        while (true) {
-            String inputLine = scanner.nextLine();
-            if (inputLine.equals("exit")) {
-                break;
-            }
-            try {
-                System.out.println(evaluate(inputLine));
-            } catch (CustomException e) {
-                System.out.println("Please, input digits only");
-                continue;
-            }
-        }
-    }
-
-    public static double evaluate(String inputLine) throws CustomException {
-        double firstDigit;
-        double secondDigit;
-        String operator = null;
+    public static double execute(String inputLine) {
 
         CalculationFactory operation = CalculationFactory.getInstance();
-        operator = operatorValidation(inputLine, operator);
+        String operator = operatorValidation(inputLine);
         String[] result = inputLine.split("[-+/*]");
         Calculation mathCalculation = operation.getCalculation(operator);
 
         if (mathCalculation.equals(MathOperation.DIVISION)) {
-            if (Double.parseDouble(result[1]) == 0.0) {
+
+            Double zero = 0.0;
+            Double userInput = Double.parseDouble(result[1]);
+            boolean comparison = Double.compare(zero, userInput) == 0.0 ? true : false;
+
+            if (comparison == true) {
                 System.out.println("Division by zero aren't allowed.");
                 return 0.0;
             }
         }
-
-        firstDigit = Double.parseDouble(result[0]);
-        secondDigit = Double.parseDouble(result[1]);
-
-        return mathCalculation.calculate(firstDigit, secondDigit);
+        try {
+            double firstDigit = Double.parseDouble(result[0]);
+            double secondDigit = Double.parseDouble(result[1]);
+            return mathCalculation.calculate(firstDigit, secondDigit);
+        } catch (NumberFormatException e) {
+            throw new MathOperationException("Please, input digits only");
+        }
     }
 
-    private static String operatorValidation(String inputLine, String operator) {
+    private static String operatorValidation(String inputLine) {
+
+        String operator = null;
+
         if (inputLine.contains("+")) {
             operator = "+";
         } else if (inputLine.contains("-")) {

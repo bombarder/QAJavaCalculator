@@ -2,7 +2,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class CalculatorTest {
+public class MainTest {
     @Test
     public void test_1_plus_1(){checkMethod("1+1", 2.0);}
     @Test
@@ -23,7 +23,7 @@ public class CalculatorTest {
     }
 
     private static void checkMethod(String input, Double expected){
-        Double actual = Calculator.evaluate(input);
+        Double actual = Main.execute(input);
        assertEquals(expected, actual);
     }
 }
