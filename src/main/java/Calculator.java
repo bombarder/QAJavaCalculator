@@ -12,9 +12,9 @@ public class Calculator {
 
             Double zero = 0.0;
             Double userInput = Double.parseDouble(result[1]);
-            boolean comparison = Double.compare(zero, userInput) == 0.0 ? true : false;
+            boolean comparison = Double.compare(zero, userInput) == 0.0;
 
-            if (comparison == true) {
+            if (comparison) {
                 System.out.println("Division by zero aren't allowed.");
                 return 0.0;
             }
