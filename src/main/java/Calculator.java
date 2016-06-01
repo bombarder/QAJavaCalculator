@@ -4,7 +4,7 @@ public class Calculator {
     public static double execute(String inputLine) {
 
         CalculationFactory operation = CalculationFactory.getInstance();
-        String operator = operatorValidation(inputLine);
+        String operator = operatorDetermination(inputLine);
         String[] result = inputLine.split("[-+/*]");
         Calculation mathCalculation = operation.getCalculation(operator);
 
@@ -27,15 +27,9 @@ public class Calculator {
         }
     }
 
-    private static String operatorValidation(String inputLine) {
+    private static String operatorDetermination(String inputLine) {
 
         String operator = null;
-
-        while (!inputLine.contains("+") && !inputLine.contains("-")
-                && !inputLine.contains("*") && !inputLine.contains("/")) {
-            System.out.println("Invalid input please enter a valid operator +, -, * or /");
-            break;
-        }
 
         if (inputLine.contains("+")) {
             operator = "+";
@@ -47,6 +41,5 @@ public class Calculator {
             operator = "/";
         }
         return operator;
-
     }
 }
