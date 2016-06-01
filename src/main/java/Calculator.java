@@ -10,9 +10,8 @@ public class Calculator {
 
         if (mathCalculation.equals(MathOperation.DIVISION)) {
 
-            Double zero = 0.0;
             Double userInput = Double.parseDouble(result[1]);
-            boolean comparison = Double.compare(zero, userInput) == 0.0;
+            boolean comparison = Double.compare(0.0, userInput) == 0.0;
 
             if (comparison) {
                 System.out.println("Division by zero aren't allowed.");
