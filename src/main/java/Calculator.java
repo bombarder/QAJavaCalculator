@@ -4,7 +4,7 @@ public class Calculator {
     public static double execute(String inputLine) {
 
         CalculationFactory operation = CalculationFactory.getInstance();
-        String operator = operatorValidation(inputLine);
+        String operator = operatorDetermination(inputLine);
         String[] result = inputLine.split("[-+/*]");
         Calculation mathCalculation = operation.getCalculation(operator);
 
@@ -14,7 +14,7 @@ public class Calculator {
             boolean comparison = Double.compare(0.0, userInput) == 0.0;
 
             if (comparison) {
-                System.out.println("Division by zero aren't allowed.");
+                System.out.println("Division by zero isn't allowed.");
                 return 0.0;
             }
         }
@@ -27,7 +27,7 @@ public class Calculator {
         }
     }
 
-    private static String operatorValidation(String inputLine) {
+    private static String operatorDetermination(String inputLine) {
 
         String operator = null;
 

@@ -12,6 +12,10 @@ public class Main extends Calculator {
             String inputLine = scanner.nextLine();
             if (inputLine.equals("exit")) {
                 break;
+            } else if (!inputLine.contains("+") && !inputLine.contains("-")
+                    && !inputLine.contains("*") && !inputLine.contains("/")) {
+                System.out.println("Please enter math operation with +, -, * or /");
+                inputLine = scanner.nextLine();
             }
             try {
                 double result = execute(inputLine);
