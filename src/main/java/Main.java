@@ -21,7 +21,7 @@ public class Main extends Calculator {
                 double result = execute(inputLine);
                 System.out.println(result);
             } catch (MathOperationException e) {
-                System.out.println(e);
+                e.printStackTrace();
             }
         }
     }
