@@ -22,6 +22,22 @@ public class CalculationFactory {
 
         return map.get(operator);
     }
+
+    public static String operatorDetermination(String inputLine) {
+
+        String operator = null;
+
+        if (inputLine.contains("+")) {
+            operator = "+";
+        } else if (inputLine.contains("-")) {
+            operator = "-";
+        } else if (inputLine.contains("*")) {
+            operator = "*";
+        } else if (inputLine.contains("/")) {
+            operator = "/";
+        }
+        return operator;
+    }
 }
 
 

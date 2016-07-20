@@ -1,15 +1,13 @@
-
-public class Calculator {
-
-    public static double execute(String inputLine) {
+public class Calculator  {
+    static double execute(String inputLine) {
 
         CalculationFactory operation = CalculationFactory.getInstance();
-        String operator = operatorDetermination(inputLine);
-        String[] result = inputLine.split("[-+/*]");
+        String operator = CalculationFactory.operatorDetermination(inputLine);
         Calculation mathCalculation = operation.getCalculation(operator);
 
-        if (mathCalculation.equals(MathOperation.DIVISION)) {
+        String[] result = inputLine.split("[-+/*]");
 
+        if (mathCalculation.equals(MathOperation.DIVISION)) {
             Double userInput = Double.parseDouble(result[1]);
             boolean comparison = Double.compare(0.0, userInput) == 0.0;
 
@@ -18,28 +16,20 @@ public class Calculator {
                 return 0.0;
             }
         }
+
         try {
-            double firstDigit = Double.parseDouble(result[0]);
-            double secondDigit = Double.parseDouble(result[1]);
-            return mathCalculation.calculate(firstDigit, secondDigit);
+            if (result[0].equals("")){
+                double firstDigit = Double.parseDouble(result[1])* -1;
+                double secondDigit = Double.parseDouble(result[2]);
+                return mathCalculation.calculate(firstDigit, secondDigit);
+            } else {
+                double firstDigit = Double.parseDouble(result[0]);
+                double secondDigit = Double.parseDouble(result[1]);
+                return mathCalculation.calculate(firstDigit, secondDigit);
+            }
         } catch (NumberFormatException e) {
             throw new MathOperationException("Please, input digits only");
         }
     }
 
-    private static String operatorDetermination(String inputLine) {
-
-        String operator = null;
-
-        if (inputLine.contains("+")) {
-            operator = "+";
-        } else if (inputLine.contains("-")) {
-            operator = "-";
-        } else if (inputLine.contains("*")) {
-            operator = "*";
-        } else if (inputLine.contains("/")) {
-            operator = "/";
-        }
-        return operator;
-    }
 }
