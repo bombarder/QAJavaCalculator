@@ -17,12 +17,8 @@ public class Main extends Calculator {
                 System.out.println("Please enter math operation with +, -, * or /");
                 inputLine = scanner.nextLine();
             }
-            try {
-                double result = execute(inputLine);
-                System.out.println(result);
-            } catch (MathOperationException e) {
-                System.out.println(e);
-            }
+            double result = execute(inputLine);
+            System.out.println(result);
         }
     }
 }

@@ -23,7 +23,7 @@ public class MainTest {
     }
 
     private static void checkMethod(String input, Double expected){
-        Double actual = Main.execute(input);
+        Double actual = Calculator.execute(input);
        assertEquals(expected, actual);
     }
 }
