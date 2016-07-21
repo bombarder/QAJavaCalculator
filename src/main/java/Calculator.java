@@ -1,4 +1,5 @@
-public class Calculator  {
+public class Calculator {
+
     static double execute(String inputLine) {
 
         CalculationFactory operation = CalculationFactory.getInstance();
@@ -18,8 +19,8 @@ public class Calculator  {
         }
 
         try {
-            if (result[0].equals("")){
-                double firstDigit = Double.parseDouble(result[1])* -1;
+            if (result[0].equals("")) {
+                double firstDigit = Double.parseDouble(result[1]) * -1;
                 double secondDigit = Double.parseDouble(result[2]);
                 return mathCalculation.calculate(firstDigit, secondDigit);
             } else {
@@ -28,8 +29,7 @@ public class Calculator  {
                 return mathCalculation.calculate(firstDigit, secondDigit);
             }
         } catch (NumberFormatException e) {
-            throw new MathOperationException("Please, input digits only");
+            throw new MathOperationException("Please, input digits only!!!!!");
         }
     }
-
 }
